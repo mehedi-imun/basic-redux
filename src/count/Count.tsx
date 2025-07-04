@@ -1,22 +1,16 @@
 import { Button } from "@/components/ui/button";
+import { decrement, increment } from "@/redux/features/counter/counterSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
-type CountProps = {
-  count: number;
-  handleIncrement: () => void;
-  handleDecrement: () => void;
-};
-
-export default function Count({
-  count,
-  handleIncrement,
-  handleDecrement,
-}: CountProps) {
+export default function Count() {
+  const count = useAppSelector((state) => state.counter.value);
+  const dispatch = useAppDispatch();
   return (
     <div>
       <h3 className=" text-4xl">{count}</h3>
       <div className="space-x-3">
-        <Button onClick={handleIncrement}>Increment</Button>
-        <Button onClick={handleDecrement}>Decrement</Button>
+        <Button onClick={() => dispatch(increment())}>Increment</Button>
+        <Button onClick={() => dispatch(decrement())}>Decrement</Button>
       </div>
     </div>
   );
