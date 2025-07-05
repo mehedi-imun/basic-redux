@@ -3,7 +3,7 @@ import { decrement, increment } from "@/redux/features/counter/counterSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 export default function Count() {
-  const count = useAppSelector((state) => state.counter.value);
+  const count = useAppSelector((state)=>state.counter.value);
   const dispatch = useAppDispatch();
   return (
     <div>
